@@ -11,6 +11,7 @@ struct Card
 {
     var isFaceUp = false
     var isMatched = false
+    var previouslySeen = false
     var identifier: Int
     static var indentifierFactory = 0
     static func getUniqueIdentifier() -> Int {
