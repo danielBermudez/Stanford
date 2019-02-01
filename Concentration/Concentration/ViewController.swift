@@ -11,19 +11,14 @@ import UIKit
 class ViewController: UIViewController {
     lazy var game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2 )
   
-    var flipCount = 0 {
-        didSet {
-            flipCountLabel.text = "Flips : \(flipCount)"
-        }
     
-    }
     @IBOutlet weak var flipCountLabel: UILabel!
     
     
     @IBOutlet weak var scoreCount: UILabel!
     @IBOutlet var cardButtons: [UIButton]!
     @IBAction func touchCard(_ sender: UIButton) {
-        flipCount += 1
+         game.flipsSum()
         if let cardNumber = cardButtons.index(of: sender){
             game.chooseCard(at: cardNumber)
             updateViewFromModel()
@@ -49,12 +44,13 @@ class ViewController: UIViewController {
             }
             
             scoreCount.text = "Score : \(game.score) "
+            flipCountLabel.text = "Flips : \(game.flips)"
             
             
     
         }
     }
-    var themes  = [[ "🦇","😱","🙀","😈","🎃","👻","🍭","🍬","🍎"],[ "🐶","🐱","🐭","🐹","🐰","🦊","🐻","🐼","🐨"],[ "🐠","🐟","🐬","🐳","🐋","🦀","🐡","🐙","🦑"],[ "🍔","🍟","🍕","🥪","🥙","🌭","🌯","🍗","🥘"],[ "⚽️","🏈","🏀","🥋","🎾","🏏","🏐","🎱","🏓"]]
+    var themes  = [[ "🦇","😱","🙀","😈","🎃","👻","🍭","🍬","🍎","👹","👺","👽","💀"],[ "🐶","🐱","🐭","🐹","🐰","🦊","🐻","🐼","🐨","🦁","🐵","🐤","🐴"],[ "🐠","🐟","🐬","🐳","🐋","🦀","🐡","🐙","🦑","🦞","🐊","🐢","🐸"],[ "🍔","🍟","🍕","🥪","🥙","🌭","🌯","🍗","🥘","🍘","🌮","🍝","🍛"],[ "⚽️","🏈","🏀","🥋","🎾","🏏","🏐","🎱","🏓","🤸🏻‍♂️","🏄‍♂️","🚴‍♂️","⛳️"]]
     
     
     var emoji=Dictionary<Int,String>()
@@ -76,9 +72,12 @@ class ViewController: UIViewController {
         emojichoices = themes[Int(arc4random_uniform(UInt32(themes.count)))]
     }
     
+    
    
-        @IBAction func Reiniciar(_ sender: UIButton) {
-            flipCount = 0
+        @IBAction func Restart(_ sender: UIButton) {
+            
+            
+            game.restartGame()
             restartEmoji()
             game.shuffleCards()
             game.restartCards()

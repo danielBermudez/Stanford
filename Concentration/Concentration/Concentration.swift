@@ -11,6 +11,7 @@ class Concentration{
     var cards = [Card]()
     var indexOfOneAndOnlyFaceUpCard :Int?
     var  score  = 0
+    var flips = 0
     
     
 func chooseCard(at index:Int){
@@ -19,19 +20,24 @@ func chooseCard(at index:Int){
     
         if !cards[index].isMatched{
             if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index {
-                cards[index].previouslySeen = true
+                
                 // check if cards match
                 if cards[matchIndex].identifier == cards[index].identifier {
                 cards[matchIndex].isMatched = true
                 cards[index].isMatched = true
-                score = score + 2
+                scorePoint()
+                cards[index].previouslySeen = false
+                cards[matchIndex].previouslySeen = false
                 }
                 cards[index].isFaceUp = true
                 indexOfOneAndOnlyFaceUpCard = nil
-                if(cards[index].previouslySeen == true || cards[matchIndex].previouslySeen == true ){
-                    score = score - 1
+                if(cards[index].previouslySeen == true && cards[matchIndex].previouslySeen == true ){
+                    penalize(val:2)
+                }else if(cards[index].previouslySeen == true || cards[matchIndex].previouslySeen == true){
+                    penalize(val:1)
                 }
-               
+                cards[index].previouslySeen = true
+                cards[matchIndex].previouslySeen = true
             }
             else  {
                 
@@ -49,6 +55,17 @@ func chooseCard(at index:Int){
         
 
         }
+    func scorePoint(){
+        score = score + 2
+    }
+    func penalize(val : Int){
+        score = score - val
+        
+    }
+    func flipsSum(){
+        flips = flips + 1
+    }
+    
   
     init(numberOfPairsOfCards: Int)    {
         for _ in 0..<numberOfPairsOfCards{
@@ -64,8 +81,15 @@ func chooseCard(at index:Int){
         for index in cards.indices{
             cards[index].isFaceUp=false
             cards[index].isMatched = false
+              cards[index].previouslySeen = false
             indexOfOneAndOnlyFaceUpCard = nil
         }
+        
+    }
+    func restartGame(){
+        score = 0
+        flips = 0
+        
     }
     func shuffleCards(){
         cards.shuffle()
