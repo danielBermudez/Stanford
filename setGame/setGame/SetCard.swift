@@ -9,13 +9,13 @@
 import UIKit
 struct setCard{
     
-    private var shape :String = " "
-    private var numberOfShapes : Int = 0
-    private var color : String = ""
-    private var shade:String = " "
+     private(set) var shape :String = " "
+    private(set)var numberOfShapes : Int = 0
+    private(set)var color : String = ""
+    private(set) var shade:String = " "
     
     
-    private var isSelected = false
+    private(set) var isSelected = false
     mutating func setSelected(selection: Bool){
         isSelected = selection
     }
@@ -39,11 +39,9 @@ struct setCard{
 }
 struct setCardCaracteristics{
     enum shapes:String, CaseIterable{
-        
-        case triangle
-        case circle
-        case square
-        
+        case triangle = "▲"
+        case circle = "◼︎"
+        case square = "●"        
     }
     enum  numberOfShapes :Int,CaseIterable{
         case one = 1,two = 2,three = 3

@@ -14,8 +14,6 @@ class Set{
     private(set) var numberOfSets = 0
     private(set) var score = 0
     private(set) var gameDeck = [setCard]()
-    
-    
     func fillDeck(){
         for numberOfShapes in setCardCaracteristics.numberOfShapes.allCases{
             for shape in setCardCaracteristics.shapes.allCases{
@@ -30,39 +28,52 @@ class Set{
                     }
                 }
             }
-        
     }
     }
     func chooseCard(at index :Int){
 //        No Cards Selected
         if(selectedCardsIndexs[0] == 0 && selectedCardsIndexs[1] == 0){
             selectedCardsIndexs[0] = index
-            completeDeck[index].setSelected(selection: true)}
+            gameDeck[index].setSelected(selection: true)}
 //            One card selected
             else if(selectedCardsIndexs[0] != 0 && selectedCardsIndexs[1] == 0){
-            selectedCardsIndexs[0] = index
-            completeDeck[index].setSelected(selection: true)
+            selectedCardsIndexs[1] = index
+            gameDeck[index].setSelected(selection: true)
 //       two cards selected
         }else{
             validateSet()
-            for flipDownIndex in completeDeck.indices{
-                completeDeck[flipDownIndex].setSelected(selection: false)
-            }
-        }
-        
-        }
-    func DealAdditionalCards(numberOfCards:Int){
+            deselectCards()
+                    }        }
+    func dealAdditionalCards(numberOfCards:Int){
         cardsShown = cardsShown + numberOfCards
         addCardsToGame(numberOfCards: numberOfCards)
         
     }
-    func validateSet(){
+    func deselectCards(){
+        selectedCardsIndexs = [0,0]
+        for flipDownIndex in gameDeck.indices{                gameDeck[flipDownIndex].setSelected(selection: false)
+            
+        }
         
     }
-    func startGame(){
+    func restartGame(){
+        completeDeck.removeAll()
+        gameDeck.removeAll()
+        fillDeck()
+        cardsShown = 12
         addCardsToGame(numberOfCards: cardsShown)
-      
-        
+        numberOfSets = 0
+        score = 0
+        selectedCardsIndexs = [0,0]
+    }
+    func validateSet(cards:() -> Bool{
+       var  validation :Bool
+        // validate shape Number
+        if()
+    }
+    func startGame(){        
+        fillDeck()
+        addCardsToGame(numberOfCards: cardsShown)
     }
     func addCardsToGame(numberOfCards:Int){
         for _ in 0 ..< numberOfCards{
@@ -70,10 +81,7 @@ class Set{
             let randomCard = completeDeck[randomCardIndex]
             gameDeck.append(randomCard)
             completeDeck.remove(at: randomCardIndex)
-            
         }
-        
-        
     }
 }
 
