@@ -34,7 +34,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "setGame/Set.swift"
-            timestampString = "571783455.885259"
+            timestampString = "572187943.0755351"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "27"
@@ -50,7 +50,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "setGame/Set.swift"
-            timestampString = "571783455.885372"
+            timestampString = "572187943.078023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "28"
@@ -66,7 +66,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "setGame/Set.swift"
-            timestampString = "571783455.885455"
+            timestampString = "572187943.078787"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "30"
@@ -82,7 +82,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "setGame/Set.swift"
-            timestampString = "571783455.885535"
+            timestampString = "572187943.079506"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "31"
@@ -98,7 +98,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "setGame/Set.swift"
-            timestampString = "571783455.885608"
+            timestampString = "572187943.080184"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
@@ -114,12 +114,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "setGame/Set.swift"
-            timestampString = "571783455.88568"
+            timestampString = "572187943.080907"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "79"
             endingLineNumber = "79"
-            landmarkName = "addCardsToGame(numberOfCards:)"
+            landmarkName = "validateSet(cards:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -135,7 +135,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "68"
             endingLineNumber = "68"
-            landmarkName = "touchCard(_:)"
+            landmarkName = "setTitleFromModel(card:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

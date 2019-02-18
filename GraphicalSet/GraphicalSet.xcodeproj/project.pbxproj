@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA2F1F33221B516200A5E373 /* SetGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2F1F32221B516200A5E373 /* SetGameView.swift */; };
 		B30E20FE2219DAF00049D68E /* SetCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E20FD2219DAF00049D68E /* SetCardView.swift */; };
 		B30E2100221A2B2C0049D68E /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E20FF221A2B2B0049D68E /* Grid.swift */; };
 		B397EDC02219D06200952087 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B397EDBF2219D06200952087 /* AppDelegate.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA2F1F32221B516200A5E373 /* SetGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGameView.swift; sourceTree = "<group>"; };
 		B30E20FD2219DAF00049D68E /* SetCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardView.swift; sourceTree = "<group>"; };
 		B30E20FF221A2B2B0049D68E /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		B397EDBC2219D06200952087 /* GraphicalSet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GraphicalSet.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +66,7 @@
 			children = (
 				B397EDBF2219D06200952087 /* AppDelegate.swift */,
 				B397EDC12219D06200952087 /* ViewController.swift */,
+				AA2F1F32221B516200A5E373 /* SetGameView.swift */,
 				B30E20FD2219DAF00049D68E /* SetCardView.swift */,
 				B397EDC32219D06200952087 /* Main.storyboard */,
 				B397EDD32219D0A700952087 /* Set.swift */,
@@ -149,6 +152,7 @@
 			files = (
 				B397EDD42219D0A700952087 /* Set.swift in Sources */,
 				B30E20FE2219DAF00049D68E /* SetCardView.swift in Sources */,
+				AA2F1F33221B516200A5E373 /* SetGameView.swift in Sources */,
 				B397EDD22219D09900952087 /* SetCard.swift in Sources */,
 				B397EDC22219D06200952087 /* ViewController.swift in Sources */,
 				B397EDC02219D06200952087 /* AppDelegate.swift in Sources */,

@@ -22,65 +22,91 @@ class SetCardView: UIView {
         
 
         
-        func drawTriangle(center:CGRect,side:CGFloat)->UIBezierPath{
-        let path = UIBezierPath()
-        let startX = center.midX
+      
+//        let path = drawTriangles(center: self.bounds,numberOfShapes:3)
         
-        let startY = center.midY - (side/3) 
         
-        path.move(to: CGPoint(x: startX, y: startY))
-        path.addLine(to: CGPoint(x: startX - (side/2) , y: startY + side / 2))
-        path.addLine(to: CGPoint(x: startX + (side/2), y: startY + side / 2))
-            path.close()
-            return path
-            
+    }
+    func drawTriangles(center:CGRect,numberOfShapes: CGFloat)->[UIBezierPath]{
+        var triangles = [UIBezierPath]()
+        var scale = CGFloat()
+        var xposition = CGFloat()
+        
+        if(numberOfShapes>1){
+            scale = center.width / numberOfShapes
+            xposition = scale/2
+        }else {
+            scale = center.width / CGFloat(2)
+            xposition = scale
         }
-        func drawSquare(center:CGRect,side:CGFloat)->UIBezierPath{
+        let side = (scale/numberOfShapes)
+        
+        for  i in  0 ..< Int(numberOfShapes.magnitude) {
             
-            let startX = center.midX - (side/2)
-            
+            let startX = (center.minX+((scale*CGFloat(i)+xposition)))
+            let startY = center.midY - (side/3)
+            let path = UIBezierPath()
+            path.move(to: CGPoint(x: startX, y: startY))
+            path.addLine(to: CGPoint(x: startX - (side/2) , y: startY + side / 2))
+            path.addLine(to: CGPoint(x: startX + (side/2), y: startY + side / 2))
+            path.close()
+            triangles.append(path)
+        }
+        return triangles
+        
+    }
+    func drawSquares(center:CGRect,numberOfShapes: CGFloat)->[UIBezierPath]{
+        
+        var squares = [UIBezierPath]()
+        var scale = CGFloat()
+        var xposition = CGFloat()
+        if(numberOfShapes>1){
+            scale = center.width / numberOfShapes
+            xposition = scale/2
+        }else {
+            scale = center.width / CGFloat(2)
+            xposition = scale
+        }
+        
+        let side = (scale/numberOfShapes)
+        for  i in  0 ..< Int(numberOfShapes.magnitude) {
+            let startX = (center.minX+((scale*CGFloat(i)+xposition)))-(side/2)
             let startY = center.midY - (side/2)
             let path = UIBezierPath(rect: CGRect(x:startX,y:startY,width:side,height:side))
-           
-            
             path.close()
-            return path
-            
+            squares.append(path)
         }
-        func drawCircle(center:CGRect)->UIBezierPath{
-        let path = UIBezierPath()
-               path.addArc(withCenter:CGPoint(x:center.midX,y:center.midY), radius: 50.0, startAngle: 0, endAngle: 2*CGFloat.pi, clockwise: true)
+        return squares
+        
+    }
+    func drawCircles(center:CGRect,numberOfShapes: CGFloat)->[UIBezierPath]{
+        
+        var circles = [UIBezierPath]()
+        var scale = CGFloat()
+        var xposition = CGFloat()
+        if(numberOfShapes>1){
+            scale = center.width / numberOfShapes
+            xposition = scale/2
+        }else {
+            scale = center.width / CGFloat(2)
+            xposition = scale
+        }
+        for  i in  0 ..< Int(numberOfShapes.magnitude) {
+            let path = UIBezierPath()
+            path.addArc(withCenter:CGPoint(x:(center.minX+((scale*CGFloat(i)+xposition))), y:center.midY), radius: (scale/(numberOfShapes*2)), startAngle: 0, endAngle: 2*CGFloat.pi, clockwise: true)
             path.lineWidth = 5.0
-            return path
+            path.close()
+            circles.append(path)
         }
-        func setcolor(color:UIColor,path :UIBezierPath,alpha:CGFloat){
-            color.setFill()
-            color.setStroke()
-            path.fill(with: CGBlendMode.normal, alpha: alpha)
-            path.stroke(with: CGBlendMode.normal, alpha: alpha)
-            
-        }
-        
-        let path = drawCircle(center: self.bounds)
-        setcolor(color: UIColor.orange, path: path,alpha: 1)
+        return circles
+    }
+    func setcolor(color:UIColor,path :UIBezierPath,alpha:CGFloat){
+        //            color.setFill()
+        color.setStroke()
+        path.fill(with: CGBlendMode.normal, alpha: alpha)
+        path.stroke(with: CGBlendMode.normal, alpha: alpha)
         
         
-      let pathTr = drawTriangle(center: (self.bounds), side: (self.bounds.width/2 ))
-        UIColor.green.setFill()
-        
-//            path.fill()
-//        path.stroke()
-        
-        let pathSq = drawSquare(center: (self.bounds), side: (self.bounds.width/2 ))
-//        UIColor.green.setFill()
-//
-//        pathSq.fill()
-//        pathSq.stroke()
-//
-//
-        
-  
-
     }
     
 

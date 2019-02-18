@@ -10,11 +10,17 @@ import UIKit
 @IBDesignable
 
 class ViewController: UIViewController {
-
+        var setGame = Set()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-       
+        
+            setGame.startGame()
+        
+        
+          
+            
+        
     }
 
 
