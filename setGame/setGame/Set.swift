@@ -10,6 +10,7 @@ import Foundation
 class Set{
     private var completeDeck = [setCard]()
     private(set) var cardsShown = 12
+     private(set) var maxcardsShown = 24
     private var selectedCardsIndexs = [0,0]
     private(set) var numberOfSets = 0
     private(set) var score = 0
@@ -41,20 +42,21 @@ class Set{
             gameDeck[index].setSelected(selection: true)
 //       two cards selected
         }else{
-            validateSet()
+            if(validateSet(cards:(gameDeck[selectedCardsIndexs[0]],gameDeck[selectedCardsIndexs[1]],gameDeck[index]))){
+               numberOfSets = numberOfSets + 1                
+            }
             deselectCards()
-                    }        }
+         }       }
     func dealAdditionalCards(numberOfCards:Int){
+    if((cardsShown+numberOfCards)<=maxcardsShown){
         cardsShown = cardsShown + numberOfCards
         addCardsToGame(numberOfCards: numberOfCards)
         
-    }
+        }}
     func deselectCards(){
         selectedCardsIndexs = [0,0]
         for flipDownIndex in gameDeck.indices{                gameDeck[flipDownIndex].setSelected(selection: false)
-            
         }
-        
     }
     func restartGame(){
         completeDeck.removeAll()
@@ -66,25 +68,49 @@ class Set{
         score = 0
         selectedCardsIndexs = [0,0]
     }
-    func validateSet(cards:() -> Bool{
-       var  validation :Bool
-        // validate shape Number
-        if()
+    func validateSet(cards:(firstCard:setCard,secondCard:setCard,thirdCard:setCard) )-> Bool{
+        let shapeVal = validateStringCharacteristic(first: cards.firstCard.shape,second: cards.secondCard.shape,third:cards.thirdCard.shape)
+         let colorVal = validateStringCharacteristic(first: cards.firstCard.color,second: cards.secondCard.color,third:cards.thirdCard.color)
+        let shadeVal = validateStringCharacteristic(first: cards.firstCard.shade,second: cards.secondCard.shade,third:cards.thirdCard.shade)
+         let numberVal = validateIntCharacteristic(first: cards.firstCard.numberOfShapes,second: cards.secondCard.numberOfShapes,third:cards.thirdCard.numberOfShapes)
+        if(shapeVal && colorVal && shadeVal && numberVal){
+            return true
+        }else {return false}
+        
+        
+    }
+    func validateStringCharacteristic(first:String,second:String,third:String)-> Bool{
+        if((first == second) && (first == third) ){
+            return true
+        }else if ((first != second) && (first != third)){
+            return true
+        }else{
+            return false
+        }
+    }
+    func validateIntCharacteristic(first:Int,second:Int,third:Int)-> Bool{
+        if((first == second) && (first == third) ){
+            return true
+        }else if ((first != second) && (first != third)){
+            return true
+        }else{
+            return false
+        }
     }
     func startGame(){        
         fillDeck()
         addCardsToGame(numberOfCards: cardsShown)
     }
     func addCardsToGame(numberOfCards:Int){
+        
         for _ in 0 ..< numberOfCards{
             let randomCardIndex = completeDeck.index(completeDeck.startIndex, offsetBy: completeDeck.count.arc4random)
             let randomCard = completeDeck[randomCardIndex]
             gameDeck.append(randomCard)
             completeDeck.remove(at: randomCardIndex)
         }
-    }
+        }
 }
-
 extension Int {
     var arc4random: Int {
         if self > 0 {
@@ -94,8 +120,6 @@ extension Int {
         }else {
             return 0
         }
-        
     }
-    
 }
 

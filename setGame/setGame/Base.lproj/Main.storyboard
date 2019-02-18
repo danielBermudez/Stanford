@@ -316,28 +316,23 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="Df2-UY-mm6">
-                                <rect key="frame" x="35" y="508" width="250" height="50"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="Df2-UY-mm6">
+                                <rect key="frame" x="63" y="508" width="194" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uXP-uj-On2">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="72" height="50"/>
                                         <color key="backgroundColor" red="0.0" green="0.037342803607805938" blue="0.63563143480852768" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" priority="999" constant="100" id="7GE-x9-cwM"/>
-                                            <constraint firstAttribute="height" constant="50" id="OP8-9z-p2s"/>
-                                        </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Add Cards"/>
                                         <connections>
-                                            <action selector="test:" destination="BYZ-38-t0r" eventType="touchUpInside" id="s2y-sj-Eql"/>
+                                            <action selector="addCards:" destination="BYZ-38-t0r" eventType="touchUpInside" id="s2y-sj-Eql"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJm-AX-KLE">
-                                        <rect key="frame" x="150" y="0.0" width="100" height="50"/>
+                                        <rect key="frame" x="122" y="0.0" width="72" height="50"/>
                                         <color key="backgroundColor" red="0.0" green="0.037342803610000003" blue="0.63563143479999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="JnZ-MT-ioG"/>
-                                            <constraint firstAttribute="width" priority="999" constant="100" id="LJh-70-hMY"/>
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Restart"/>
@@ -363,6 +358,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="addCardsButton" destination="uXP-uj-On2" id="xxv-jT-IGR"/>
                         <outlet property="scoreCount" destination="ydz-yn-DBe" id="jZY-H1-7ay"/>
                         <outlet property="setCount" destination="WyT-2L-t0c" id="Era-uB-eFe"/>
                         <outletCollection property="cardsView" destination="RUY-9j-82B" collectionClass="NSMutableArray" id="PiY-tp-RwR"/>

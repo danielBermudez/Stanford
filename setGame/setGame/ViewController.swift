@@ -11,10 +11,18 @@ import UIKit
 class ViewController: UIViewController {
     var setGame  = Set()
     @IBOutlet var cardsView: [UIButton]!
-    @IBAction private func test(_ sender: UIButton) {
-        setGame.dealAdditionalCards(numberOfCards: 3)
+    @IBAction private func addCards(_ sender:
+        UIButton) {
+        if(setGame.cardsShown < 24){
+     setGame.dealAdditionalCards(numberOfCards: 3)
+    updateViewFromModel()
+        }else{
+            sender.isEnabled = false
+        }
+        
     }
     
+    @IBOutlet weak var addCardsButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         setGame.startGame()
@@ -27,6 +35,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var setCount: UILabel!
     
     func updateViewFromModel(){
+       
         scoreCount.text = "Score: \(setGame.score)"
        setCount.text = "Sets: \(setGame.numberOfSets)"
         
@@ -94,9 +103,11 @@ class ViewController: UIViewController {
     }
     func disableAllCards(){
         for index in cardsView.indices{
+            
             let button = cardsView[index]
             button.isEnabled = false
             button.setTitle("", for: .normal)
+          button.setAttributedTitle(nil, for: .normal)
             button.backgroundColor = #colorLiteral(red: 0.2584128082, green: 0.277672708, blue: 1, alpha: 1)
         }
     }
@@ -104,8 +115,9 @@ class ViewController: UIViewController {
         setGame.restartGame()
         disableAllCards()
         updateViewFromModel()
-    }
+        addCardsButton.isEnabled = true
         
+    }        
     }
     
     
