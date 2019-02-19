@@ -9,28 +9,34 @@
 import UIKit
 
 class SetCardView: UIView {
-
+    var rounderRect = UIBezierPath()
+  
     
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
+        
         // Drawing code
-        let rounderRect = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius)
-        rounderRect.addClip()
+        rounderRect = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius)
         UIColor.white.setFill()
+        UIColor.clear.setStroke()
         rounderRect.fill()
+        rounderRect.stroke()
         
 
-        
       
-//        let path = drawTriangles(center: self.bounds,numberOfShapes:3)
-        
+//       let path = drawTriangles(center: self.bounds,numberOfShapes:3)
+//        for index in path.indices{
+//            setcolor(color: UIColor.green, path: path[index],alpha: 0.5)
+//            
+//        }
         
     }
     func drawTriangles(center:CGRect,numberOfShapes: CGFloat)->[UIBezierPath]{
         var triangles = [UIBezierPath]()
         var scale = CGFloat()
         var xposition = CGFloat()
+        
         
         if(numberOfShapes>1){
             scale = center.width / numberOfShapes
@@ -100,15 +106,32 @@ class SetCardView: UIView {
         }
         return circles
     }
-    func setcolor(color:UIColor,path :UIBezierPath,alpha:CGFloat){
-        //            color.setFill()
-        color.setStroke()
-        path.fill(with: CGBlendMode.normal, alpha: alpha)
-        path.stroke(with: CGBlendMode.normal, alpha: alpha)
+    
+    func setcolor(color:UIColor, path:UIBezierPath, alpha:CGFloat,fill: Bool){
+       let colorwithalpha =  color.cgColor.copy(alpha:alpha)
+      
+        let shapeLayer = CAShapeLayer()
+       
+        shapeLayer.path = path.cgPath
         
+        if (fill){
+            shapeLayer.fillColor = colorwithalpha
+        }else{
+      shapeLayer.fillColor = UIColor.clear.cgColor
+            shapeLayer.lineWidth = 5.0
+            shapeLayer.strokeColor = colorwithalpha
+        }
+      
+
+        self.layer.addSublayer(shapeLayer)
+        
+        
+        
+       
         
     }
     
+  
 
 }
 extension SetCardView{
@@ -121,5 +144,5 @@ extension SetCardView{
     private var cornerRadius:CGFloat{
         return bounds.size.height*SizeRatio.cornerRadiusToBoundsHeight
     }
-
+    
 }

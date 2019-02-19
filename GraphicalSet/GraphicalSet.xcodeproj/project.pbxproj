@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AA2F1F33221B516200A5E373 /* SetGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2F1F32221B516200A5E373 /* SetGameView.swift */; };
+		AA79C9D7221CB06000707E81 /* SetCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA79C9D6221CB06000707E81 /* SetCard.swift */; };
 		B30E20FE2219DAF00049D68E /* SetCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E20FD2219DAF00049D68E /* SetCardView.swift */; };
 		B30E2100221A2B2C0049D68E /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E20FF221A2B2B0049D68E /* Grid.swift */; };
 		B397EDC02219D06200952087 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B397EDBF2219D06200952087 /* AppDelegate.swift */; };
@@ -15,12 +16,12 @@
 		B397EDC52219D06200952087 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B397EDC32219D06200952087 /* Main.storyboard */; };
 		B397EDC72219D06900952087 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B397EDC62219D06900952087 /* Assets.xcassets */; };
 		B397EDCA2219D06900952087 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B397EDC82219D06900952087 /* LaunchScreen.storyboard */; };
-		B397EDD22219D09900952087 /* SetCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B397EDD12219D09900952087 /* SetCard.swift */; };
 		B397EDD42219D0A700952087 /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = B397EDD32219D0A700952087 /* Set.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AA2F1F32221B516200A5E373 /* SetGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGameView.swift; sourceTree = "<group>"; };
+		AA79C9D6221CB06000707E81 /* SetCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetCard.swift; sourceTree = "<group>"; };
 		B30E20FD2219DAF00049D68E /* SetCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardView.swift; sourceTree = "<group>"; };
 		B30E20FF221A2B2B0049D68E /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		B397EDBC2219D06200952087 /* GraphicalSet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GraphicalSet.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -30,7 +31,6 @@
 		B397EDC62219D06900952087 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B397EDC92219D06900952087 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B397EDCB2219D06900952087 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B397EDD12219D09900952087 /* SetCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetCard.swift; path = ../../setGame/setGame/SetCard.swift; sourceTree = "<group>"; };
 		B397EDD32219D0A700952087 /* Set.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Set.swift; path = ../../setGame/setGame/Set.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,8 +70,8 @@
 				B30E20FD2219DAF00049D68E /* SetCardView.swift */,
 				B397EDC32219D06200952087 /* Main.storyboard */,
 				B397EDD32219D0A700952087 /* Set.swift */,
-				B397EDD12219D09900952087 /* SetCard.swift */,
 				B30E20FF221A2B2B0049D68E /* Grid.swift */,
+				AA79C9D6221CB06000707E81 /* SetCard.swift */,
 				B397EDC62219D06900952087 /* Assets.xcassets */,
 				B397EDC82219D06900952087 /* LaunchScreen.storyboard */,
 				B397EDCB2219D06900952087 /* Info.plist */,
@@ -150,10 +150,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA79C9D7221CB06000707E81 /* SetCard.swift in Sources */,
 				B397EDD42219D0A700952087 /* Set.swift in Sources */,
 				B30E20FE2219DAF00049D68E /* SetCardView.swift in Sources */,
 				AA2F1F33221B516200A5E373 /* SetGameView.swift in Sources */,
-				B397EDD22219D09900952087 /* SetCard.swift in Sources */,
 				B397EDC22219D06200952087 /* ViewController.swift in Sources */,
 				B397EDC02219D06200952087 /* AppDelegate.swift in Sources */,
 				B30E2100221A2B2C0049D68E /* Grid.swift in Sources */,
