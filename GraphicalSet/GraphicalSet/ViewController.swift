@@ -11,14 +11,18 @@ import UIKit
 
 class ViewController: UIViewController {
         var setGame = Set()
+        var deckView = [SetCardView]()
     @IBOutlet weak var setGameView : SetGameView!{
     didSet{
         
         setGame.startGame()
         setGame.fillDeck()
-        let cardModel = setGame.gameDeck[0]
-        setGameView.drawCard(shape: cardModel.shape, numberOfShapes: cardModel.numberOfShapes, shade: cardModel.shade, color: setColorFromModel(color: cardModel.color)!)
+        for index in setGame.gameDeck.indices{
         
+            deckView.append(setGameView.drawCard(shape: setGame.gameDeck[index].shape, numberOfShapes: setGame.gameDeck[index].numberOfShapes, shade: setGame.gameDeck[index].shade, color: setColorFromModel(color:setGame.gameDeck[index].color)!))
+        
+        }
+        setGameView.addCards(cards: deckView)
         
     
         }}

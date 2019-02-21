@@ -40,8 +40,8 @@ struct setCard{
 struct setCardCaracteristics{
     enum shapes:String, CaseIterable{
         case triangle 
-        case circle = "◼︎"
-        case square = "●"        
+        case circle
+        case square      
     }
     enum  numberOfShapes :Int,CaseIterable{
         case one = 1,two = 2,three = 3
