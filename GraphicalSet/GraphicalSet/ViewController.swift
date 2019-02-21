@@ -12,19 +12,17 @@ import UIKit
 class ViewController: UIViewController {
         var setGame = Set()
         var deckView = [SetCardView]()
+    
+    @IBAction func AddCards(_ sender: Any) {
+        setGame.addCardsToGame(numberOfCards: 3)
+            drawCards()
+    }
     @IBOutlet weak var setGameView : SetGameView!{
     didSet{
         
         setGame.startGame()
         setGame.fillDeck()
-        for index in setGame.gameDeck.indices{
-        
-            deckView.append(setGameView.drawCard(shape: setGame.gameDeck[index].shape, numberOfShapes: setGame.gameDeck[index].numberOfShapes, shade: setGame.gameDeck[index].shade, color: setColorFromModel(color:setGame.gameDeck[index].color)!))
-        
-        }
-        setGameView.addCards(cards: deckView)
-        
-    
+        drawCards()
         }}
     private func setColorFromModel(color :String)->UIColor?{
         if(color == "red"){
@@ -34,6 +32,15 @@ class ViewController: UIViewController {
         }else if (color == "blue"){
             return   UIColor.blue
         }else{ return nil}
+        
+    }
+    private func drawCards(){
+        var frames = setGameView.addCards(NumberOFcards: setGame.gameDeck.count)
+        for index in setGame.gameDeck.indices{
+            
+            setGameView.drawCard(shape: setGame.gameDeck[index].shape, numberOfShapes: setGame.gameDeck[index].numberOfShapes, shade: setGame.gameDeck[index].shade, color: setColorFromModel(color:setGame.gameDeck[index].color)!, frame: frames[index])
+            
+        }
         
     }
     override func viewDidLoad() {

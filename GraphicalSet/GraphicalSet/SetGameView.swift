@@ -27,21 +27,26 @@ class SetGameView: UIView {
 //        drawCard(shape: "triangle", numberOfShapes: 2, shade: "nil", color: "nil")
   
     }
-    func addCards(cards:[SetCardView]){
-        var grid = Grid(layout: Grid.Layout.dimensions(rowCount: 9, columnCount: 9), frame: self.bounds)
-        for index in cards.indices
-        {
-            for row in 0..<grid.dimensions.rowCount{
-                for column in 0..<grid.dimensions.columnCount{
-                    cards[index].frame = grid[row,column]!
-                    addSubview(cards[index])
-                    
-            
-                }}}
+    func addCards(NumberOFcards:Int)-> [CGRect]{
+        var frames = [CGRect]()
+        var grid = Grid.init(layout: Grid.Layout.aspectRatio(2/3))
+        grid.frame = self.bounds
+        grid.cellCount = NumberOFcards
+        for index in 0..<NumberOFcards
+        { frames.append( grid[index]!)
+        };return frames
+    }
+    func updateCard(card : SetCardView, frame : CGRect){
+        
+        card.frame = frame
+        card.removeShape()
+     
     }
    
-    func drawCard(shape:String, numberOfShapes:Int, shade:String, color:UIColor)->SetCardView{
+    func drawCard(shape:String, numberOfShapes:Int, shade:String, color:UIColor, frame : CGRect){
         let card = SetCardView()
+        card.frame = frame
+        
         
         
         
@@ -69,7 +74,8 @@ class SetGameView: UIView {
             }
            card.setcolor(color: color, path: path[index],alpha:alpha,fill: fill)
             }
-        return card
+        addSubview(card)
+        
         }        
     }
     

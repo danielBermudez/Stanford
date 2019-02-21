@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GraphicalSet/SetGameView.swift"
-            timestampString = "572305521.123116"
+            filePath = "GraphicalSet/SetCardView.swift"
+            timestampString = "572452194.475515"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "drawCard(shape:numberOfShapes:shade:color:)"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "setcolor(color:path:alpha:fill:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
