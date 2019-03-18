@@ -10,7 +10,7 @@ import Foundation
 class Set{
     private var completeDeck = [setCard]()
     private(set) var cardsShown = 12
-     private(set) var maxcardsShown = 24
+    
     private var selectedCardsIndexs = [0,0]
     private(set) var numberOfSets = 0
     private(set) var score = 0
@@ -47,12 +47,12 @@ class Set{
             }
             deselectCards()
          }       }
-    func dealAdditionalCards(numberOfCards:Int){
-    if((cardsShown+numberOfCards)<=maxcardsShown){
-        cardsShown = cardsShown + numberOfCards
-        addCardsToGame(numberOfCards: numberOfCards)
-        
-        }}
+//    func dealAdditionalCards(numberOfCards:Int){
+//    if((cardsShown+numberOfCards)<=maxcardsShown){
+//        cardsShown = cardsShown + numberOfCards
+//        addCardsToGame(numberOfCards: numberOfCards)
+//
+//        }}
     func deselectCards(){
         selectedCardsIndexs = [0,0]
         for flipDownIndex in gameDeck.indices{                gameDeck[flipDownIndex].setSelected(selection: false)
@@ -102,14 +102,14 @@ class Set{
         addCardsToGame(numberOfCards: cardsShown)
     }
     func addCardsToGame(numberOfCards:Int){
-        
+        if (gameDeck.count + numberOfCards) <= 81{
         for _ in 0 ..< numberOfCards{
             let randomCardIndex = completeDeck.index(completeDeck.startIndex, offsetBy: completeDeck.count.arc4random)
             let randomCard = completeDeck[randomCardIndex]
             gameDeck.append(randomCard)
             completeDeck.remove(at: randomCardIndex)
         }
-        }
+        }}
 }
 extension Int {
     var arc4random: Int {

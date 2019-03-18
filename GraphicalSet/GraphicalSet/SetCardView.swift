@@ -10,7 +10,7 @@ import UIKit
 
 class SetCardView: UIView {
     var rounderRect = UIBezierPath()
-     var shapeLayer = CAShapeLayer()
+    
   
     
     // Only override draw() if you perform custom drawing.
@@ -26,16 +26,19 @@ class SetCardView: UIView {
         
 
       
-//       let path = drawTriangles(center: self.bounds,numberOfShapes:3)
+//       let path = drawTriangles(center: self.bounds,numberOfShapes:2)
 //        for index in path.indices{
-//            setcolor(color: UIColor.green, path: path[index],alpha: 0.5)
-//            
+//            setcolor(color: UIColor.green, path: path[index],alpha: 0.5, fill: true)
+//
 //        }
         
     }
     func  removeShape(){
-        shapeLayer.removeFromSuperlayer()
-        
+        let sublayers = self.layer.sublayers
+        for layer in sublayers! {
+            layer.removeFromSuperlayer()
+        }
+        self.layer.needsDisplay()
         
     }
     func drawTriangles(center:CGRect,numberOfShapes: CGFloat)->[UIBezierPath]{
@@ -115,7 +118,7 @@ class SetCardView: UIView {
     
     func setcolor(color:UIColor, path:UIBezierPath, alpha:CGFloat,fill: Bool){
        let colorwithalpha =  color.cgColor.copy(alpha:alpha)
-      
+      let shapeLayer = CAShapeLayer()
        
        
         shapeLayer.path = path.cgPath
@@ -123,7 +126,7 @@ class SetCardView: UIView {
         if (fill){
             shapeLayer.fillColor = colorwithalpha
         }else{
-      shapeLayer.fillColor = UIColor.clear.cgColor
+    shapeLayer.fillColor = UIColor.clear.cgColor
             shapeLayer.lineWidth = 5.0
             shapeLayer.strokeColor = colorwithalpha
         }

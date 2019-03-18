@@ -32,31 +32,45 @@ class SetGameView: UIView {
         var grid = Grid.init(layout: Grid.Layout.aspectRatio(2/3))
         grid.frame = self.bounds
         grid.cellCount = NumberOFcards
-        for index in 0..<NumberOFcards
-        { frames.append( grid[index]!)
-        };return frames
-    }
-    func updateCard(card : SetCardView, frame : CGRect){
+        for index in 0..<NumberOFcards{
+            frames.append( grid[index]!)
+        }
         
-        card.frame = frame
+        return frames
+    }
+    
+    func updateCard(card : SetCardView){
+        
+//        card.frame = frame
         card.removeShape()
      
     }
+    func addCards(deck : [SetCardView]){
+        cleanView()
+        for card in deck {
+              addSubview(card)
+        }
+      
+    }
+    func cleanView(){
+       
+        self.setNeedsDisplay()
+    }
    
-    func drawCard(shape:String, numberOfShapes:Int, shade:String, color:UIColor, frame : CGRect){
-        let card = SetCardView()
-        card.frame = frame
+    func drawCard(cardToDraw: SetCardView,shape:String, numberOfShapes:Int, shade:String, color:UIColor, frame : CGRect)-> SetCardView{
+       
+        cardToDraw.frame = frame
         
         
         
         
         var path = [UIBezierPath]()
         if(shape == "triangle"){
-            path = card.drawTriangles(center: card.bounds, numberOfShapes: CGFloat(numberOfShapes))
+            path = cardToDraw.drawTriangles(center: cardToDraw.bounds, numberOfShapes: CGFloat(numberOfShapes))
             }else if(shape == "square"){
-                path = card.drawSquares(center: card.bounds, numberOfShapes: CGFloat(numberOfShapes))
+                path = cardToDraw.drawSquares(center: cardToDraw.bounds, numberOfShapes: CGFloat(numberOfShapes))
                 }else if(shape == "circle"){
-                    path = card.drawCircles(center: card.bounds, numberOfShapes: CGFloat(numberOfShapes))
+                    path = cardToDraw.drawCircles(center: cardToDraw.bounds, numberOfShapes: CGFloat(numberOfShapes))
                      }
         for index in path.indices{
             var alpha = CGFloat()
@@ -72,9 +86,9 @@ class SetGameView: UIView {
                 alpha = 1
                 fill = false
             }
-           card.setcolor(color: color, path: path[index],alpha:alpha,fill: fill)
+           cardToDraw.setcolor(color: color, path: path[index],alpha:alpha,fill: fill)
             }
-        addSubview(card)
+        return cardToDraw
         
         }        
     }
