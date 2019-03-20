@@ -7,11 +7,11 @@
 //
 
 import Foundation
-class Set{
+class SetModel{
     private var completeDeck = [setCard]()
     private(set) var cardsShown = 12
     private(set) var maxcardsShown = 24
-    
+
     private var selectedCardsIndexs = [0,0]
     private(set) var numberOfSets = 0
     private(set) var score = 0

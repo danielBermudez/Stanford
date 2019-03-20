@@ -10,10 +10,43 @@ import UIKit
 @IBDesignable
 
 class ViewController: UIViewController {
-        var setGame = Set()
+    @IBOutlet weak var setCount: UILabel!
+    var setGame = SetModel()
         var deckView = [SetCardView]()
         var frames = [CGRect]()
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            let position = touch.location(in: setGameView)
+            guard let viewTouched = touch.view else {
+                return
+            }
+            
+           
+            print("Tag view \(viewTouched.tag)")
+            touchCard(cardNumber: viewTouched.tag)
+            setGameView.setNeedsDisplay()
+        }
+
+    }
+    func touchCard(cardNumber:Int){
+        setGame.chooseCard(at: cardNumber)
+        updateCardsFromModel()
+        
+    }
+    func updateCardsFromModel(){
+        for cardNumber in deckView.indices{
+            deckView[cardNumber].changeCardColor(isSelected: setGame.gameDeck[cardNumber].isSelected)
+            deckView[cardNumber].setNeedsDisplay()
+             updateSetLabel()
+            
+        }
+    }
+    func updateSetLabel(){
+        setCount.text = "Sets: \(setGame.numberOfSets)"
+    }
     
+    @IBOutlet weak var addCardsButton: UIButton!
     @IBAction func AddCards(_ sender: UIButton) {
         if (setGame.gameDeck.count == 81){
             sender.isEnabled = false
@@ -26,9 +59,12 @@ class ViewController: UIViewController {
         }
 
     }
+    
+
+   
     @IBOutlet weak var setGameView : SetGameView!{
     didSet{
-        
+        setGameView.tag = 100
         setGame.startGame()
         setGame.fillDeck()
         initialCards()
@@ -51,6 +87,7 @@ class ViewController: UIViewController {
         for index in setGame.gameDeck.indices{
             let emptyCard = SetCardView()
             let card = setGameView.drawCard(cardToDraw: emptyCard,shape: setGame.gameDeck[index].shape, numberOfShapes: setGame.gameDeck[index].numberOfShapes, shade: setGame.gameDeck[index].shade, color: setColorFromModel(color:setGame.gameDeck[index].color)!, frame: frames[index])
+            card.tag = index;
             deckView.append(card)
             
       }
@@ -62,7 +99,7 @@ class ViewController: UIViewController {
     private func updateCards(){
             updateFrames()
         for i  in deckView.indices {
-            setGameView.updateCard(card: deckView[i])
+            setGameView.cleanCardDraw(card: deckView[i])
             deckView[i] = setGameView.drawCard(cardToDraw: deckView[i],shape: setGame.gameDeck[i].shape, numberOfShapes: setGame.gameDeck[i].numberOfShapes, shade: setGame.gameDeck[i].shade, color: setColorFromModel(color:setGame.gameDeck[i].color)!, frame: frames[i])
         }
     
@@ -73,6 +110,7 @@ class ViewController: UIViewController {
         for index in deckView.count ... (setGame.gameDeck.count - 1 ) {
             let emptyCard = SetCardView()
             let card = setGameView.drawCard(cardToDraw: emptyCard,shape: setGame.gameDeck[index].shape, numberOfShapes: setGame.gameDeck[index].numberOfShapes, shade: setGame.gameDeck[index].shade, color: setColorFromModel(color:setGame.gameDeck[index].color)!, frame: frames[index])
+            card.tag = index;
             deckView.append(card)
         }
     }
@@ -87,7 +125,17 @@ class ViewController: UIViewController {
         
     }
 
-
+    @IBAction func restartGame(_ sender: Any) {
+         setGame.restartGame()
+        deckView.removeAll()
+        setGameView.cleanView()
+        initialCards()
+       setGameView.addCards(deck: deckView)
+        
+        updateSetLabel()
+        addCardsButton.isEnabled = true
+    }
+    
 }
 
 

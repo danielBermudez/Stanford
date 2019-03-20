@@ -9,7 +9,7 @@
 import UIKit
 struct setCard{
     
-     private(set) var shape :String = " "
+    private(set) var shape :String = " "
     private(set)var numberOfShapes : Int = 0
     private(set)var color : String = ""
     private(set) var shade:String = " "

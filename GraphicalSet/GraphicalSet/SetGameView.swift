@@ -39,31 +39,27 @@ class SetGameView: UIView {
         return frames
     }
     
-    func updateCard(card : SetCardView){
-        
-//        card.frame = frame
+    func cleanCardDraw(card : SetCardView){
         card.removeShape()
-     
     }
+    
     func addCards(deck : [SetCardView]){
-        cleanView()
+        self.setNeedsDisplay()
         for card in deck {
               addSubview(card)
         }
-      
     }
+   
+    
     func cleanView(){
-       
+        for view in self.subviews{
+            view.removeFromSuperview()
+        }
         self.setNeedsDisplay()
     }
    
     func drawCard(cardToDraw: SetCardView,shape:String, numberOfShapes:Int, shade:String, color:UIColor, frame : CGRect)-> SetCardView{
-       
         cardToDraw.frame = frame
-        
-        
-        
-        
         var path = [UIBezierPath]()
         if(shape == "triangle"){
             path = cardToDraw.drawTriangles(center: cardToDraw.bounds, numberOfShapes: CGFloat(numberOfShapes))
