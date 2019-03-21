@@ -34,6 +34,7 @@ class SetModel{
     }
     func chooseCard(at index :Int){
 //        No Cards Selected
+        if index < 81 {
         if selectedCardsIndexs.contains(index){
              gameDeck[index].setSelected(selection: false)
             selectedCardsIndexs[selectedCardsIndexs.firstIndex(of: index)!] = -1
@@ -55,7 +56,7 @@ class SetModel{
                numberOfSets = numberOfSets + 1                
             }
             deselectCards()
-         }       }
+            }    }   }
 //    func dealAdditionalCards(numberOfCards:Int){
 //    if((cardsShown+numberOfCards)<=maxcardsShown){
 //        cardsShown = cardsShown + numberOfCards
