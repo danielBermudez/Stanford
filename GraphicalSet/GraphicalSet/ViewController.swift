@@ -118,12 +118,17 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
        
-        
-        
+         NotificationCenter.default.addObserver(self, selector: #selector(updateCardsSize), name: UIDevice.orientationDidChangeNotification, object: nil)
           
             
         
     }
+    @objc func updateCardsSize(){
+    updateFrames()
+    updateCards()
+    setGameView.addCards(deck: deckView)
+    }
+    
 
     @IBAction func restartGame(_ sender: Any) {
          setGame.restartGame()
